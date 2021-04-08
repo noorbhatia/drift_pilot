@@ -1,3 +1,4 @@
+import 'package:drift_pilot/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class Transition extends StatefulWidget {
@@ -45,14 +46,17 @@ class Skip extends StatelessWidget {
           alignment: Alignment.center,
           child: TextButton(
             onPressed: () {
-              Navigator.pushNamed(context, 'LoginScreen');
+              Navigator.pushReplacement(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (BuildContext context) => new LoginScreen()));
             },
             child: Text(
               'SKIP',
               style: TextStyle(
                 fontFamily: 'SProSemiBold',
                 color: Colors.white,
-                fontSize: 14,
+                fontSize: 11,
               ),
             ),
           ),
@@ -72,14 +76,17 @@ class Continue extends StatelessWidget {
           alignment: Alignment.center,
           child: TextButton(
             onPressed: () {
-              Navigator.pushNamed(context, 'LoginScreen');
+              Navigator.pushReplacement(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (BuildContext context) => new LoginScreen()));
             },
             child: Text(
               'CONTINUE',
               style: TextStyle(
                 fontFamily: 'SProSemiBold',
                 color: Colors.white,
-                fontSize: 14,
+                fontSize: 11,
               ),
             ),
           ),

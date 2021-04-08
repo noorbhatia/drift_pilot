@@ -1,3 +1,4 @@
+import 'package:drift_pilot/text_transition.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -46,14 +47,17 @@ class InputPage extends StatelessWidget {
                   OverlayTwo(
                     page: 2,
                   ),
-                  Title(
-                    icon: 'phone',
-                    colouredText: 'Get real time ',
-                    title: 'updates on your trip',
-                    description:
-                        'Add your business expenses and get reimbursed easily.',
-                  ),
                 ],
+              ),
+            ),
+            TextTransition(
+              delay: Duration(seconds: initialDelay.inSeconds + 3),
+              child: Title(
+                icon: 'phone',
+                colouredText: 'Get real time ',
+                title: 'updates on your trip',
+                description:
+                    'Add your business expenses and get reimbursed easily.',
               ),
             ),
             Fade(
@@ -69,14 +73,17 @@ class InputPage extends StatelessWidget {
                   Overlay(
                     page: 3,
                   ),
-                  Title(
-                    icon: 'money_tag',
-                    colouredText: 'Manage ',
-                    title: 'your expenses on-the-go',
-                    description:
-                        'Add your business expenses and get reimbursed easily.',
-                  ),
                 ],
+              ),
+            ),
+            TextTransition(
+              delay: Duration(seconds: initialDelay.inSeconds + 6),
+              child: Title(
+                icon: 'money_tag',
+                colouredText: 'Manage ',
+                title: 'your expenses on-the-go',
+                description:
+                    'Add your business expenses and get reimbursed easily.',
               ),
             ),
             Fade(
@@ -92,14 +99,17 @@ class InputPage extends StatelessWidget {
                   OverlayTwo(
                     page: 4,
                   ),
-                  Title(
-                    icon: 'wallet',
-                    colouredText: 'Automate ',
-                    title: 'your expense reporting',
-                    description:
-                        'Add your business expenses and get reimbursed easily.',
-                  ),
                 ],
+              ),
+            ),
+            TextTransition(
+              delay: Duration(seconds: initialDelay.inSeconds + 9),
+              child: Title(
+                icon: 'wallet',
+                colouredText: 'Automate ',
+                title: 'your expense reporting',
+                description:
+                    'Add your business expenses and get reimbursed easily.',
               ),
             ),
             DottedLine(),
@@ -180,71 +190,76 @@ class Title extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 130),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 32),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'images/ic_$icon.png',
-                )
-              ],
+    Size size = MediaQuery.of(context).size;
+    return Container(
+      height: size.height * 1,
+      width: size.width * 1,
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 130),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'images/ic_$icon.png',
+                  )
+                ],
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 13),
-            child: Row(
+            Padding(
+              padding: const EdgeInsets.only(bottom: 13),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    width: 300,
+                    child: Text.rich(
+                      TextSpan(
+                          text: '$colouredText',
+                          style: TextStyle(
+                            fontFamily: 'SProBold',
+                            fontSize: 22,
+                            color: Colors.tealAccent,
+                          ),
+                          children: [
+                            TextSpan(
+                              text: '$title',
+                              style: TextStyle(
+                                  fontFamily: 'SProBold',
+                                  fontSize: 22,
+                                  color: Colors.white),
+                            )
+                          ]),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
                   width: 300,
-                  child: Text.rich(
-                    TextSpan(
-                        text: '$colouredText',
-                        style: TextStyle(
-                          fontFamily: 'SProBold',
-                          fontSize: 25,
-                          color: Colors.tealAccent,
-                        ),
-                        children: [
-                          TextSpan(
-                            text: '$title',
-                            style: TextStyle(
-                                fontFamily: 'SProBold',
-                                fontSize: 25,
-                                color: Colors.white),
-                          )
-                        ]),
+                  child: Text(
+                    '$description',
                     textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: 'SProReg',
+                      fontSize: 12,
+                      color: Colors.white70,
+                      wordSpacing: 0.3,
+                    ),
                   ),
                 ),
               ],
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: 300,
-                child: Text(
-                  '$description',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontFamily: 'SProReg',
-                    fontSize: 14,
-                    color: Colors.white70,
-                    wordSpacing: 0.3,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

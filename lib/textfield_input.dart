@@ -31,18 +31,13 @@ class TextInputField extends StatelessWidget {
               hintText: hint,
               hintStyle: TextStyle(
                 fontFamily: 'SProReg',
-                fontSize: 21,
+                fontSize: 16,
                 color: Colors.white,
-              ),
-              labelStyle: TextStyle(
-                fontFamily: 'SProReg',
-                fontSize: 18,
-                color: Colors.white70,
               ),
             ),
             style: TextStyle(
               fontFamily: 'SProReg',
-              fontSize: 21,
+              fontSize: 16,
               color: Colors.white,
             ),
             keyboardType: inputType,

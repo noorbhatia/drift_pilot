@@ -21,7 +21,7 @@ class LoginScreen extends StatelessWidget {
                         text: 'drift',
                         style: TextStyle(
                           fontFamily: 'SProBold',
-                          fontSize: 60,
+                          fontSize: 50,
                           color: Colors.tealAccent,
                         ),
                         children: [
@@ -29,14 +29,14 @@ class LoginScreen extends StatelessWidget {
                             text: 'pilot\n',
                             style: TextStyle(
                                 fontFamily: 'SProBold',
-                                fontSize: 60,
+                                fontSize: 50,
                                 color: Colors.white),
                           ),
                           TextSpan(
                             text: 'It\'s all about the journey',
                             style: TextStyle(
                               fontFamily: 'SProReg',
-                              fontSize: 18,
+                              fontSize: 14,
                               color: Colors.white,
                             ),
                           ),
