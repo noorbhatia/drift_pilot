@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:drift_pilot/pallete.dart';
 import 'package:drift_pilot/textfield_input.dart';
 import 'background_image.dart';
 
@@ -27,12 +26,20 @@ class LoginScreen extends StatelessWidget {
                         ),
                         children: [
                           TextSpan(
-                            text: 'pilot',
+                            text: 'pilot\n',
                             style: TextStyle(
                                 fontFamily: 'SProBold',
                                 fontSize: 60,
                                 color: Colors.white),
-                          )
+                          ),
+                          TextSpan(
+                            text: 'It\'s all about the journey',
+                            style: TextStyle(
+                              fontFamily: 'SProReg',
+                              fontSize: 18,
+                              color: Colors.white,
+                            ),
+                          ),
                         ]),
                     textAlign: TextAlign.center,
                   ),

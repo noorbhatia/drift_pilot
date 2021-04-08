@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'pallete.dart';
 
 class TextInputField extends StatelessWidget {
   const TextInputField({
@@ -29,11 +28,23 @@ class TextInputField extends StatelessWidget {
           child: TextField(
             decoration: InputDecoration(
               border: InputBorder.none,
-              labelText: hint,
-              labelStyle: kBodyText,
-              floatingLabelBehavior: FloatingLabelBehavior.auto,
+              hintText: hint,
+              hintStyle: TextStyle(
+                fontFamily: 'SProReg',
+                fontSize: 21,
+                color: Colors.white,
+              ),
+              labelStyle: TextStyle(
+                fontFamily: 'SProReg',
+                fontSize: 18,
+                color: Colors.white70,
+              ),
             ),
-            style: kBodyText,
+            style: TextStyle(
+              fontFamily: 'SProReg',
+              fontSize: 21,
+              color: Colors.white,
+            ),
             keyboardType: inputType,
             textInputAction: inputAction,
           ),

@@ -1,35 +1,15 @@
-import 'package:drawing_animation/drawing_animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'background_image.dart';
 import 'line.dart';
+import 'button.dart';
+import 'fade.dart';
 
-class InputPage extends StatefulWidget {
-  @override
-  _InputPageState createState() => _InputPageState();
-}
-
-class _InputPageState extends State<InputPage> {
+class InputPage extends StatelessWidget {
   Duration initialDelay = Duration(seconds: 1);
   bool run = true;
-  bool _visible = true;
-
-  @override
-  void initState() {
-    super.initState(); //when this route starts, it will execute this code
-    Future.delayed(Duration(seconds: initialDelay.inSeconds + 10), () {
-      //asynchronous delay
-      //checks if widget is still active and not disposed
-      setState(() {
-        //tells the widget builder to rebuild again because ui has updated
-        _visible =
-            false; //update the variable declare this under your class so its accessible for both your widget build and initState which is located under widget build{}
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,13 +33,16 @@ class _InputPageState extends State<InputPage> {
                 ),
               ],
             ),
+            Fade(
+              child: Background(
+                page: 2,
+              ),
+              delay: Duration(seconds: initialDelay.inSeconds + 3),
+            ),
             DelayedDisplay(
               delay: Duration(seconds: initialDelay.inSeconds + 3),
               child: Stack(
                 children: [
-                  Background(
-                    page: 2,
-                  ),
                   OverlayTwo(
                     page: 2,
                   ),
@@ -73,13 +56,16 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
+            Fade(
+              child: Background(
+                page: 3,
+              ),
+              delay: Duration(seconds: initialDelay.inSeconds + 6),
+            ),
             DelayedDisplay(
               delay: Duration(seconds: initialDelay.inSeconds + 6),
               child: Stack(
                 children: [
-                  Background(
-                    page: 3,
-                  ),
                   Overlay(
                     page: 3,
                   ),
@@ -93,13 +79,16 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
+            Fade(
+              child: Background(
+                page: 4,
+              ),
+              delay: Duration(seconds: initialDelay.inSeconds + 9),
+            ),
             DelayedDisplay(
               delay: Duration(seconds: initialDelay.inSeconds + 9),
               child: Stack(
                 children: [
-                  Background(
-                    page: 4,
-                  ),
                   OverlayTwo(
                     page: 4,
                   ),
@@ -114,14 +103,12 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
             DottedLine(),
-            AnimatedCrossFade(
-              firstChild: Skip(),
-              secondChild: Continue(),
-              crossFadeState: _visible
-                  ? CrossFadeState.showFirst
-                  : CrossFadeState.showSecond,
-              duration: Duration(seconds: 1),
-            )
+            Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Transition(),
+              ],
+            ),
           ],
         ),
       ),
@@ -199,7 +186,7 @@ class Title extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Padding(
-            padding: const EdgeInsets.only(bottom: 25),
+            padding: const EdgeInsets.only(bottom: 32),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -263,33 +250,6 @@ class Title extends StatelessWidget {
   }
 }
 
-class Skip extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.bottomCenter,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          TextButton(
-            onPressed: () {
-              Navigator.pushNamed(context, 'LoginScreen');
-            },
-            child: Text(
-              'SKIP',
-              style: TextStyle(
-                fontFamily: 'SProSemiBold',
-                color: Colors.white,
-                fontSize: 14,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 class DottedLine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -310,33 +270,6 @@ class DottedLine extends StatelessWidget {
                   child: Line(),
                 ),
               ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class Continue extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.bottomCenter,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          TextButton(
-            onPressed: () {
-              Navigator.pushNamed(context, 'LoginScreen');
-            },
-            child: Text(
-              'CONTINUE',
-              style: TextStyle(
-                fontFamily: 'SProSemiBold',
-                color: Colors.white,
-                fontSize: 14,
-              ),
             ),
           ),
         ],
